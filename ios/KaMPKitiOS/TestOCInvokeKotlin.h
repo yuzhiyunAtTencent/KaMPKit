@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestOCInvokeKotlin : NSObject
 
+- (void)invokeKotlinFun;
+
 @end
 
 NS_ASSUME_NONNULL_END

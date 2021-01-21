@@ -7,7 +7,19 @@
 //
 
 #import "TestOCInvokeKotlin.h"
+#import <shared/shared.h>
+
+@interface TestOCInvokeKotlin ()
+
+@end
 
 @implementation TestOCInvokeKotlin
+
+- (void)invokeKotlinFun {
+    NSLog(@"__________________________________invokeKotlinFun");
+    
+    SharedBreed *bread = [[SharedBreed alloc] initWithId:1222 name:@"myBread" favorite:1];
+//    bread h
+}
 
 @end

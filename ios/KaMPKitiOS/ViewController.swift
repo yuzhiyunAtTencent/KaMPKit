@@ -13,7 +13,7 @@ class BreedsViewController: UIViewController {
 
     @IBOutlet weak var breedTableView: UITableView!
     var data: [Breed] = []
-    
+    var ocObject : TestOCInvokeKotlin?
     let log = koin.get(objCClass: Kermit.self, parameter: "ViewController") as! Kermit
     
     lazy var adapter: NativeViewModel = NativeViewModel(
@@ -29,9 +29,15 @@ class BreedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         breedTableView.dataSource = self
-        
+        self.testOcInvokeKotlin()
         //We check for stalk data in this method
         adapter.getBreedsFromNetwork()
+    }
+    
+    // 测试oc调用kotlin发生crash是否会丢失堆栈
+    private func testOcInvokeKotlin() {
+        ocObject = TestOCInvokeKotlin()
+        ocObject?.invokeKotlinFun()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
