@@ -9,17 +9,38 @@
 #import "TestOCInvokeKotlin.h"
 #import <shared/shared.h>
 
-@interface TestOCInvokeKotlin ()
+@protocol TestOCProtocol <NSObject>
+
+- (void)testFun:(SharedNativeViewModel *)adapter;
+
+@end
+
+@interface TestOCInvokeKotlin () <TestOCProtocol>
 
 @end
 
 @implementation TestOCInvokeKotlin
 
-- (void)invokeKotlinFun {
-    NSLog(@"__________________________________invokeKotlinFun");
-    
+- (void)lostFrameStack:(SharedNativeViewModel *)adapter {
+    [self real1:adapter];
+}
+
+- (void)real1:(SharedNativeViewModel *)adapter {
+    [self real2:adapter];
+}
+
+- (void)real2:(SharedNativeViewModel *)adapter {
+    [self real3:adapter];
+}
+
+- (void)real3:(SharedNativeViewModel *)adapter {
+    [self testFun:adapter];
+}
+
+- (void)testFun:(SharedNativeViewModel *)adapter {
+    NSLog(@"s");
     SharedBreed *bread = [[SharedBreed alloc] initWithId:1222 name:@"myBread" favorite:1];
-//    bread h
+    [adapter updateBreedFavoriteBreed:bread];
 }
 
 @end

@@ -29,15 +29,8 @@ class BreedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         breedTableView.dataSource = self
-        self.testOcInvokeKotlin()
         //We check for stalk data in this method
         adapter.getBreedsFromNetwork()
-    }
-    
-    // 测试oc调用kotlin发生crash是否会丢失堆栈
-    private func testOcInvokeKotlin() {
-        ocObject = TestOCInvokeKotlin()
-        ocObject?.invokeKotlinFun()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,6 +75,36 @@ extension BreedsViewController: UITableViewDataSource {
 // MARK: - BreedCellDelegate
 extension BreedsViewController: BreedCellDelegate {
     func toggleFavorite(_ breed: Breed) {
+        // 测试OC调用kotlin
+        self.testOcInvokeKotlinLostFrameStack()
+        
+        // 测试Swift调用kotlin
+//        self.testSwiftInvokeKotlin(breed: breed)
+    }
+    
+    // 测试oc调用kotlin发生crash是否会丢失堆栈
+    private func testOcInvokeKotlinLostFrameStack() {
+        ocObject = TestOCInvokeKotlin()
+        ocObject?.lostFrameStack(adapter)
+    }
+    
+    
+    //*********************************************************************************************
+    // 测试Swift调用kotlin
+    private func testSwiftInvokeKotlin(breed: Breed) {
+        self.real1(breed: breed)
+    }
+    
+    private func real1(breed: Breed) {
+        self.real2(breed: breed)
+    }
+    
+    private func real2(breed: Breed) {
+        self.real3(breed: breed)
+    }
+    
+    private func real3(breed: Breed) {
         adapter.updateBreedFavorite(breed: breed)
     }
+    //*********************************************************************************************
 }

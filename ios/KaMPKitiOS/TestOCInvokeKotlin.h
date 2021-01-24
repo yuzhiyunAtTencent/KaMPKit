@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <shared/shared.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TestOCInvokeKotlin : NSObject
 
-- (void)invokeKotlinFun;
+- (void)lostFrameStack:(SharedNativeViewModel *)adapter;
 
 @end
 
