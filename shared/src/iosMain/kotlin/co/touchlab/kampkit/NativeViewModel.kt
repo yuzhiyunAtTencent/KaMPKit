@@ -47,7 +47,7 @@ class NativeViewModel(
     }
 
     fun updateBreedFavorite(breed: Breed) {
-// 制造一个crash: IndexOutOfBoundsException
+// create a crash: IndexOutOfBoundsException
 
         var dataList: MutableList<String> = mutableListOf()
         dataList[100]
