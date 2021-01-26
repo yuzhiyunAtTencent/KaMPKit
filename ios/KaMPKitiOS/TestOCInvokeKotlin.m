@@ -21,24 +21,12 @@
 
 @implementation TestOCInvokeKotlin
 
-- (void)lostFrameStack:(SharedNativeViewModel *)adapter {
-    [self real1:adapter];
-}
-
-- (void)real1:(SharedNativeViewModel *)adapter {
-    [self real2:adapter];
-}
-
-- (void)real2:(SharedNativeViewModel *)adapter {
-    [self real3:adapter];
-}
-
-- (void)real3:(SharedNativeViewModel *)adapter {
-    [self testFun:adapter];
-}
-
-- (void)testFun:(SharedNativeViewModel *)adapter {
+- (void)testOc:(SharedNativeViewModel *)adapter {
+    [self lostFrameStack:adapter];
     NSLog(@"s");
+}
+
+- (void)lostFrameStack:(SharedNativeViewModel *)adapter {
     SharedBreed *bread = [[SharedBreed alloc] initWithId:1222 name:@"myBread" favorite:1];
     [adapter updateBreedFavoriteBreed:bread];
 }

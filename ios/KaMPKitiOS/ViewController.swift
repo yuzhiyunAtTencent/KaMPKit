@@ -85,7 +85,7 @@ extension BreedsViewController: BreedCellDelegate {
     // 测试oc调用kotlin发生crash是否会丢失堆栈
     private func testOcInvokeKotlinLostFrameStack() {
         ocObject = TestOCInvokeKotlin()
-        ocObject?.lostFrameStack(adapter)
+        ocObject?.testOc(adapter)
     }
     
     

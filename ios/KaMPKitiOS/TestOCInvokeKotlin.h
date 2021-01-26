@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestOCInvokeKotlin : NSObject
 
-- (void)lostFrameStack:(SharedNativeViewModel *)adapter;
+- (void)testOc:(SharedNativeViewModel *)adapter;
 
 @end
 
